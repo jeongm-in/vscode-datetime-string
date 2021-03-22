@@ -13,15 +13,29 @@ export function activate(context: vscode.ExtensionContext) {
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
 	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('ts.helloWorld', () => {
+	let disposable = vscode.commands.registerCommand('ts.timestamp', () => {
 		// The code you place here will be executed every time your command is executed
 
 		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from timestamp!');
+		let current_timestamp = Date.now();
+		let current_date = new Date(current_timestamp);
+		let datestring = `${(current_date.getMonth() + 1).toString().padStart(2, "0")}-${current_date.getDate()}-${current_date.getFullYear()}`;
+
+
+		const editor = vscode.window.activeTextEditor;
+		if (!editor) {
+			return;
+		}
+
+		//edit text
+		editor.edit((edit) => {
+			const insertPosition: vscode.Position = editor.selection.active;
+			edit.insert(insertPosition, datestring);
+		});
 	});
 
 	context.subscriptions.push(disposable);
 }
 
 // this method is called when your extension is deactivated
-export function deactivate() {}
+export function deactivate() { }

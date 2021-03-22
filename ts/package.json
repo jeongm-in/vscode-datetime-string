@@ -2,6 +2,7 @@
 	"name": "ts",
 	"displayName": "timestamp",
 	"description": "insert current timestamp",
+	"publisher":"JeongMinLim",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.54.0"
@@ -10,14 +11,14 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:ts.helloWorld"
+		"onCommand:ts.timestamp"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "ts.helloWorld",
-				"title": "Hello World"
+				"command": "ts.timestamp",
+				"title": "timestamp"
 			}
 		]
 	},
